@@ -1,0 +1,17 @@
+{
+  "name": "encrypty",
+  "version": "2.0.0",
+  "description": "Advanced Parallel File Encryption System with Multiprocessing Visualization",
+  "scripts": {
+    "build": "echo 'No build step required - static site'"
+  },
+  "keywords": [
+    "encryption",
+    "multiprocessing",
+    "parallel-processing",
+    "file-encryption",
+    "visualization"
+  ],
+  "author": "",
+  "license": "MIT"
+}

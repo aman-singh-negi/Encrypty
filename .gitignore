@@ -1,0 +1,95 @@
+# Build artifacts
+*.o
+*.exe
+*.a
+*.so
+*.dll
+*.dylib
+
+# Compiled binaries
+encrypt_decrypt
+cryption
+encrypty_demo.exe
+
+# CMake build directories
+build/
+cmake-build-debug/
+cmake-build-release/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.ninja
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+myvenv/
+venv/
+env/
+ENV/
+
+# macOS
+__MACOSX/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Test files (keep structure, ignore large test data)
+test/*.txt
+!test/test1.txt
+!test/test2.txt
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+*.logs
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node (if using npm)
+node_modules/
+package-lock.json
+
+# Distribution
+dist/
+*.tar.gz
+*.zip
+
+# Documentation (not needed for deployment)
+*.md
+!DEPLOY.md
+
+# Coverage
+coverage/
+*.gcov
+*.gcda
+*.gcno
+
+# Profiling
+*.prof
+gmon.out
+

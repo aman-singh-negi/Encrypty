@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCRYPTY - Encryption Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>ENCRYPTY</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-lock"></i>
+                        Encrypt
+                    </a>
+                    <a href="decrypt.html" class="nav-link">
+                        <i class="fas fa-unlock"></i>
+                        Decrypt
+                    </a>
+                    <a href="performance.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        Performance
+                    </a>
+                    <a href="visualize.html" class="nav-link active">
+                        <i class="fas fa-eye"></i>
+                        Visualize
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Encryption Visualization</span>
+                            <br>See the Magic Happen
+                        </h1>
+                        <p class="hero-description">
+                            Watch the encryption process in real-time with interactive visualizations and animations.
+                        </p>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="encryption-animation">
+                            <div class="file-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="encryption-process">
+                                <div class="process-step">
+                                    <i class="fas fa-file"></i>
+                                    <span>Original</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="process-step">
+                                    <i class="fas fa-magic"></i>
+                                    <span>Transform</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="process-step">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Encrypted</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Demo Section -->
+                <div class="encryption-section">
+                    <div class="section-header">
+                        <h2>Interactive Encryption Demo</h2>
+                        <p>Type text and watch it get encrypted in real-time</p>
+                    </div>
+
+                    <div class="visualization-demo">
+                        <div class="demo-controls">
+                            <div class="control-group">
+                                <label for="demoText">Enter Text:</label>
+                                <textarea id="demoText" placeholder="Type your message here..." rows="4"></textarea>
+                            </div>
+                            <div class="control-group">
+                                <label for="demoKey">Encryption Key:</label>
+                                <input type="range" id="demoKey" min="1" max="255" value="13">
+                                <div class="key-display">
+                                    <span>Key: </span>
+                                    <span id="keyValue">13</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <button id="animateBtn" class="btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Animate Encryption
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="visualization-area">
+                            <div class="text-container">
+                                <div class="text-label">Original Text</div>
+                                <div class="text-display" id="originalText">Your text will appear here...</div>
+                            </div>
+                            
+                            <div class="transformation-area">
+                                <div class="transformation-visual" id="transformationVisual">
+                                    <div class="byte-grid" id="byteGrid"></div>
+                                </div>
+                                <div class="transformation-label">Encryption Process</div>
+                            </div>
+                            
+                            <div class="text-container">
+                                <div class="text-label">Encrypted Text</div>
+                                <div class="text-display" id="encryptedText">Encrypted result will appear here...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Algorithm Visualization -->
+                <div class="algorithm-section">
+                    <div class="section-header">
+                        <h2>Caesar Cipher Algorithm</h2>
+                        <p>Understanding how the encryption works</p>
+                    </div>
+
+                    <div class="algorithm-visualization">
+                        <div class="algorithm-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Character to ASCII</h3>
+                                <p>Each character is converted to its ASCII value</p>
+                                <div class="ascii-demo" id="asciiDemo">
+                                    <div class="char-item">
+                                        <span class="char">H</span>
+                                        <span class="ascii">72</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="algorithm-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Apply Key</h3>
+                                <p>Add the encryption key to each ASCII value</p>
+                                <div class="math-demo" id="mathDemo">
+                                    <div class="math-item">
+                                        <span class="formula">72 + 13 = 85</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="algorithm-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Modulo Operation</h3>
+                                <p>Apply modulo 256 to keep values in valid range</p>
+                                <div class="modulo-demo" id="moduloDemo">
+                                    <div class="modulo-item">
+                                        <span class="formula">85 % 256 = 85</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="algorithm-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>ASCII to Character</h3>
+                                <p>Convert back to character representation</p>
+                                <div class="char-demo" id="charDemo">
+                                    <div class="char-item">
+                                        <span class="ascii">85</span>
+                                        <span class="char">U</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Visualization -->
+                <div class="file-visualization-section">
+                    <div class="section-header">
+                        <h2>File Encryption Visualization</h2>
+                        <p>See how files are processed byte by byte</p>
+                    </div>
+
+                    <div class="file-visualization">
+                        <div class="file-controls">
+                            <div class="control-group">
+                                <label for="fileSize">File Size (KB):</label>
+                                <input type="range" id="fileSize" min="1" max="100" value="10">
+                                <div class="size-display">
+                                    <span>Size: </span>
+                                    <span id="fileSizeValue">10 KB</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <button id="simulateFileBtn" class="btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Simulate File Encryption
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="file-visual-area">
+                            <div class="file-header">
+                                <h3>File Processing Visualization</h3>
+                                <div class="file-stats">
+                                    <span id="bytesProcessed">0</span> / <span id="totalBytes">0</span> bytes
+                                </div>
+                            </div>
+                            <div class="file-grid" id="fileGrid"></div>
+                            <div class="file-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="fileProgressFill"></div>
+                                </div>
+                                <div class="progress-text" id="fileProgressText">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Visualization -->
+                <div class="features-section">
+                    <div class="section-header">
+                        <h2>Security Features</h2>
+                        <p>Understanding encryption security</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3>Key Space</h3>
+                            <p>With 255 possible keys, there are 255 different ways to encrypt each character, providing strong security for most use cases.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Data Protection</h3>
+                            <p>Your files are encrypted locally in your browser. No data is sent to external servers, ensuring complete privacy.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Reversible Process</h3>
+                            <p>Decryption is the exact reverse of encryption, allowing you to restore your original files with the correct key.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-eye-slash"></i>
+                            </div>
+                            <h3>Visual Security</h3>
+                            <p>Encrypted data appears as random characters, making it impossible to read without the decryption key.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>ENCRYPTY</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ENCRYPTY. All rights reserved. Secure file encryption made simple.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="visualize-script.js"></script>
+</body>
+</html>

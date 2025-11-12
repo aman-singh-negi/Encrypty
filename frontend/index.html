@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCRYPTY - Secure File Encryption</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>ENCRYPTY</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-lock"></i>
+                        Encrypt
+                    </a>
+                    <a href="decrypt.html" class="nav-link">
+                        <i class="fas fa-unlock"></i>
+                        Decrypt
+                    </a>
+                    <a href="performance.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        Performance
+                    </a>
+                    <a href="visualize.html" class="nav-link">
+                        <i class="fas fa-eye"></i>
+                        Visualize
+                    </a>
+                    <a href="gantt.html" class="nav-link">
+                        <i class="fas fa-chart-gantt"></i>
+                        Gantt Chart
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Secure File Encryption</span>
+                            <br>Made Simple
+                        </h1>
+                        <p class="hero-description">
+                            Protect your files with military-grade encryption. Upload, encrypt, and secure your data with just a few clicks.
+                        </p>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="encryption-animation">
+                            <div class="file-icon">
+                                <i class="fas fa-file"></i>
+                            </div>
+                            <div class="encryption-process">
+                                <div class="process-step">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Upload</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="process-step">
+                                    <i class="fas fa-key"></i>
+                                    <span>Encrypt</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="process-step">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Secure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Encryption Form -->
+                <div class="encryption-section">
+                    <div class="section-header">
+                        <h2>File Encryption</h2>
+                        <p>Upload your file and set an encryption key to secure your data</p>
+                    </div>
+
+                    <div class="encryption-form">
+                        <!-- File Upload Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-content">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <h3>Drop your file here</h3>
+                                <p>or <span class="upload-link">browse to choose a file</span></p>
+                                <div class="file-types">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-type">DOC</span>
+                                    <span class="file-type">TXT</span>
+                                    <span class="file-type">IMG</span>
+                                    <span class="file-type">Any</span>
+                                </div>
+                            </div>
+                            <input type="file" id="fileInput" class="file-input" accept="*/*">
+                        </div>
+
+                        <!-- File Info -->
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <div class="file-details">
+                                <div class="file-icon">
+                                    <i class="fas fa-file"></i>
+                                </div>
+                                <div class="file-meta">
+                                    <h4 id="fileName"></h4>
+                                    <p id="fileSize"></p>
+                                </div>
+                                <button class="remove-file" id="removeFile">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Encryption Key -->
+                        <div class="key-section">
+                            <label for="encryptionKey" class="form-label">
+                                <i class="fas fa-key"></i>
+                                Encryption Key
+                            </label>
+                            <div class="key-input-group">
+                                <input type="number" id="encryptionKey" class="key-input" placeholder="Enter key (1-255)" min="1" max="255" value="13">
+                                <div class="key-generator">
+                                    <button type="button" id="generateKey" class="btn-secondary">
+                                        <i class="fas fa-random"></i>
+                                        Generate
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="key-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <span class="strength-text" id="strengthText">Medium</span>
+                            </div>
+                        </div>
+
+                        <!-- Processing Mode -->
+                        <div class="mode-section">
+                            <label for="processingMode" class="form-label">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Processing Mode
+                            </label>
+                            <div class="mode-input-group">
+                                <select id="processingMode" class="mode-select">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="fast">Performance</option>
+                                    <option value="cinematic">Cinematic</option>
+                                </select>
+                                <span class="mode-hint">Tune animations and worker timing</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button id="encryptBtn" class="btn-primary" disabled>
+                                <i class="fas fa-lock"></i>
+                                Encrypt File
+                            </button>
+                            <button id="clearBtn" class="btn-secondary">
+                                <i class="fas fa-trash"></i>
+                                Clear All
+                            </button>
+                        </div>
+
+                        <!-- Preview Section -->
+                        <div class="preview-section" id="previewSection">
+                            <div class="preview-header">
+                                <h3>Live Preview</h3>
+                                <span id="previewStatus" class="preview-status">Waiting for file...</span>
+                            </div>
+                            <div class="preview-content">
+                                <div class="preview-panel">
+                                    <h4>Original</h4>
+                                    <pre id="previewOriginal" class="preview-code">// Select a text-based file to preview</pre>
+                                </div>
+                                <div class="preview-panel">
+                                    <h4>Transformed</h4>
+                                    <pre id="previewEncrypted" class="preview-code">// Preview will appear after encryption</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-header">
+                        <h3>Encrypting File...</h3>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-step active" id="step1">
+                            <i class="fas fa-upload"></i>
+                            <span>Reading File</span>
+                        </div>
+                        <div class="progress-step" id="step2">
+                            <i class="fas fa-key"></i>
+                            <span>Multiprocessing Encryption</span>
+                        </div>
+                        <div class="progress-step" id="step3">
+                            <i class="fas fa-download"></i>
+                            <span>Preparing Download</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="result-card success">
+                        <div class="result-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="result-content">
+                            <h3>Encryption Complete!</h3>
+                            <p>Your file has been successfully encrypted and is ready for download.</p>
+                            <div class="result-actions">
+                                <button id="downloadBtn" class="btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download Encrypted File
+                                </button>
+                                <button id="previewBtn" class="btn-secondary">
+                                    <i class="fas fa-eye"></i>
+                                    Preview Content
+                                </button>
+                                <button id="encryptAnotherBtn" class="btn-secondary">
+                                    <i class="fas fa-plus"></i>
+                                    Encrypt Another File
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Section -->
+                <div class="features-section">
+                    <div class="section-header">
+                        <h2>Why Choose ENCRYPTY?</h2>
+                        <p>Advanced security features for your peace of mind</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Military-Grade Security</h3>
+                            <p>Advanced encryption algorithms ensure your files are protected with the highest level of security.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Lightning Fast</h3>
+                            <p>Optimized processing ensures your files are encrypted quickly without compromising on security.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <h3>Privacy First</h3>
+                            <p>All encryption happens locally in your browser. Your files never leave your device.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Cross-Platform</h3>
+                            <p>Works seamlessly across all devices and browsers. No installation required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>ENCRYPTY</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ENCRYPTY. All rights reserved. Secure file encryption made simple.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

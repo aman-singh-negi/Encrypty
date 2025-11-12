@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCRYPTY - File Decryption</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>ENCRYPTY</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-lock"></i>
+                        Encrypt
+                    </a>
+                    <a href="decrypt.html" class="nav-link active">
+                        <i class="fas fa-unlock"></i>
+                        Decrypt
+                    </a>
+                    <a href="performance.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        Performance
+                    </a>
+                    <a href="visualize.html" class="nav-link">
+                        <i class="fas fa-eye"></i>
+                        Visualize
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="gradient-text">File Decryption</span>
+                            <br>Restore Your Files
+                        </h1>
+                        <p class="hero-description">
+                            Decrypt your encrypted files safely and securely. Simply upload your encrypted file and enter the correct key.
+                        </p>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="encryption-animation">
+                            <div class="file-icon">
+                                <i class="fas fa-file-shield"></i>
+                            </div>
+                            <div class="encryption-process">
+                                <div class="process-step">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Upload</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="process-step">
+                                    <i class="fas fa-key"></i>
+                                    <span>Decrypt</span>
+                                </div>
+                                <div class="arrow">→</div>
+                                <div class="process-step">
+                                    <i class="fas fa-file"></i>
+                                    <span>Restore</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decryption Form -->
+                <div class="encryption-section">
+                    <div class="section-header">
+                        <h2>File Decryption</h2>
+                        <p>Upload your encrypted file and enter the decryption key to restore your original file</p>
+                    </div>
+
+                    <div class="encryption-form">
+                        <!-- File Upload Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-content">
+                                <div class="upload-icon">
+                                    <i class="fas fa-file-shield"></i>
+                                </div>
+                                <h3>Drop your encrypted file here</h3>
+                                <p>or <span class="upload-link">browse to choose a file</span></p>
+                                <div class="file-types">
+                                    <span class="file-type">Encrypted</span>
+                                    <span class="file-type">Any</span>
+                                </div>
+                            </div>
+                            <input type="file" id="fileInput" class="file-input" accept="*/*">
+                        </div>
+
+                        <!-- File Info -->
+                        <div class="file-info" id="fileInfo" style="display: none;">
+                            <div class="file-details">
+                                <div class="file-icon">
+                                    <i class="fas fa-file-shield"></i>
+                                </div>
+                                <div class="file-meta">
+                                    <h4 id="fileName"></h4>
+                                    <p id="fileSize"></p>
+                                </div>
+                                <button class="remove-file" id="removeFile">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Decryption Key -->
+                        <div class="key-section">
+                            <label for="decryptionKey" class="form-label">
+                                <i class="fas fa-key"></i>
+                                Decryption Key
+                            </label>
+                            <div class="key-input-group">
+                                <input type="number" id="decryptionKey" class="key-input" placeholder="Enter decryption key" min="1" max="255">
+                                <div class="key-generator">
+                                    <button type="button" id="helpKey" class="btn-secondary">
+                                        <i class="fas fa-question-circle"></i>
+                                        Help
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="key-info">
+                                <p><i class="fas fa-info-circle"></i> Enter the same key that was used to encrypt this file</p>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button id="decryptBtn" class="btn-primary" disabled>
+                                <i class="fas fa-unlock"></i>
+                                Decrypt File
+                            </button>
+                            <button id="clearBtn" class="btn-secondary">
+                                <i class="fas fa-trash"></i>
+                                Clear All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-header">
+                        <h3>Decrypting File...</h3>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-step active" id="step1">
+                            <i class="fas fa-upload"></i>
+                            <span>Reading File</span>
+                        </div>
+                        <div class="progress-step" id="step2">
+                            <i class="fas fa-key"></i>
+                            <span>Applying Decryption</span>
+                        </div>
+                        <div class="progress-step" id="step3">
+                            <i class="fas fa-download"></i>
+                            <span>Preparing Download</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="result-card success">
+                        <div class="result-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="result-content">
+                            <h3>Decryption Complete!</h3>
+                            <p>Your file has been successfully decrypted and is ready for download.</p>
+                            <div class="result-actions">
+                                <button id="downloadBtn" class="btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download Decrypted File
+                                </button>
+                                <button id="decryptAnotherBtn" class="btn-secondary">
+                                    <i class="fas fa-plus"></i>
+                                    Decrypt Another File
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="features-section">
+                    <div class="section-header">
+                        <h2>Decryption Help</h2>
+                        <p>Need help with decryption? Here are some common solutions</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3>Forgot Your Key?</h3>
+                            <p>If you've forgotten your encryption key, unfortunately there's no way to recover the file. Always keep your keys safe!</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-shield"></i>
+                            </div>
+                            <h3>Wrong Key Error?</h3>
+                            <p>Make sure you're using the exact same key that was used for encryption. Even a single digit difference will fail.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>File Integrity</h3>
+                            <p>Ensure your encrypted file hasn't been corrupted or modified. Any changes to the file will prevent successful decryption.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <h3>Backup Strategy</h3>
+                            <p>Always keep backups of both your original files and encryption keys. Store them in separate, secure locations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>ENCRYPTY</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ENCRYPTY. All rights reserved. Secure file encryption made simple.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="decrypt-script.js"></script>
+</body>
+</html>

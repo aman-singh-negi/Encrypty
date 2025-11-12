@@ -1,0 +1,52 @@
+# Ignore C++ source files (not needed for frontend deployment)
+encrypty/
+__MACOSX/
+*.cpp
+*.hpp
+*.h
+*.cc
+*.c
+*.o
+*.exe
+Makefile
+CMakeLists.txt
+*.cmake
+*.json
+!package.json
+!vercel.json
+
+# Ignore build directories
+build/
+cmake-build-*/
+CMakeFiles/
+
+# Ignore Python virtual environment
+myvenv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Ignore test files
+test/
+*.txt
+!frontend/**/*.txt
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore macOS metadata
+__MACOSX/
+.DS_Store
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.bak
+
